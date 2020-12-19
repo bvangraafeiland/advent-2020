@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Bastiaan van Graafeiland",
   "license": "MIT",
+  "scripts": {
+    "build": "rollup -c --watch",
+    "start": "node bundle.js"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.1.0",
     "@tsconfig/node14": "^1.0.0",

@@ -11,4 +11,8 @@ export const triples = (numbers: number[]): Triple[] =>
         [number, ...pair]
     ))
 
-export const getNumbers = (input: string) => input.split('\n').map((num) => parseInt(num))
+export const getLines = (input: string) => input.split('\n').filter(Boolean);
+
+export const getNumbers = (input: string) => {
+    return getLines(input).map((num) => parseInt(num));
+}
