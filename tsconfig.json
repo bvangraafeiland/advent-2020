@@ -1,7 +1,3 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./build"
-  },
-  "include": ["./src"]
+  "extends": "@tsconfig/node14/tsconfig.json"
 }
