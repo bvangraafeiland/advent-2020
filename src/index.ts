@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import { productOfPairs, productOfTriples } from "./day1";
 import { getLines, getNumbers } from "./utilities";
 import { isValidOfficialPassword, isValidSledRentalPassword, numValidPasswords } from "./day2";
-import { numTreesEncountered } from "./day3";
+import { multiplyEncounteredTrees, numTreesEncountered } from "./day3";
 
 fs.readFile('./input/day1.txt').then((contents) => {
     let numbers = getNumbers(contents.toString());
@@ -16,8 +16,15 @@ fs.readFile('./input/day2.txt').then((contents) => {
     console.log(`day 2, part 2: ${numValidPasswords(passwords, isValidOfficialPassword)}`);
 });
 
+export const slopes = [
+    { right: 1, down: 1},
+    { right: 3, down: 1},
+    { right: 5, down: 1},
+    { right: 7, down: 1},
+    { right: 1, down: 2},
+];
 fs.readFile('./input/day3.txt').then((contents) => {
     let map = getLines(contents.toString()).map((line) => line.split(''));
-    console.log(`day 3, part 1: ${numTreesEncountered(map)}`);
-    // console.log(`day 2, part 2: ${numValidPasswords(passwords, isValidOfficialPassword)}`);
+    console.log(`day 3, part 1: ${numTreesEncountered(map, 3, 1)}`);
+    console.log(`day 3, part 2: ${multiplyEncounteredTrees(map, slopes)}`);
 });
