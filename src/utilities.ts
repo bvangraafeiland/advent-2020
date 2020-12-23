@@ -16,3 +16,5 @@ export const getLines = (input: string) => input.split('\n').filter(Boolean);
 export const getNumbers = (input: string) => {
     return getLines(input).map((num) => parseInt(num));
 }
+
+export const parsePassportInput = (input: string) => input.split('\n\n');

@@ -1,6 +1,5 @@
 import { multiplyEncounteredTrees, numTreesEncountered } from "../src/day3";
 import { getLines } from "../src/utilities";
-import { slopes } from "../src";
 
 const input = `..##.......
 #...#...#..
@@ -20,6 +19,6 @@ describe('day 3', () => {
         expect(numTreesEncountered(map, 3, 1)).toBe(7);
     });
     it('multiplies the number of trees in the given slopes', () => {
-        expect(multiplyEncounteredTrees(map, slopes)).toBe(336);
+        expect(multiplyEncounteredTrees(map)).toBe(336);
     });
 });

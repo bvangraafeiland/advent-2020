@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 export function numTreesEncountered(map: string[][], stepsRight: number, stepsDown: number) {
     const rows = [...rowsToVisit(map.length, stepsDown)];
     const cols = map[0].length;
@@ -12,7 +14,14 @@ function* rowsToVisit(numRows: number, stepsDown: number) {
     }
 }
 
-export function multiplyEncounteredTrees(map: string[][], slopes: { right: number, down: number }[]) {
+const slopes = [
+    { right: 1, down: 1},
+    { right: 3, down: 1},
+    { right: 5, down: 1},
+    { right: 7, down: 1},
+    { right: 1, down: 2},
+];
+export function multiplyEncounteredTrees(map: string[][]) {
     return slopes.map(( { right, down }) => numTreesEncountered(map, right, down))
         .reduce((previous, current) => previous * current);
 }
