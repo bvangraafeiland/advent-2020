@@ -2,6 +2,8 @@ export function getPositionFromBoardingPass(boardingPass: string): [number, numb
     return [getPosition(boardingPass.slice(0, 7), 0, 127), getPosition(boardingPass.slice(7), 0, 7)];
 }
 
+export const getSeatId = ([row, col]: [number, number]) => row * 8 + col
+
 function getPosition(boardingPass: string, lower: number, upper: number): number {
     if (lower === upper) return lower;
 
@@ -15,4 +17,13 @@ function getPosition(boardingPass: string, lower: number, upper: number): number
     }
 
     throw new Error('Invalid input');
+}
+
+export function getMissingSeatId(seatIds: number[]) {
+    let sortedIds = seatIds.sort((a, b) => a - b);
+    const differences = sortedIds.map((id, index) => {
+        return sortedIds[index + 1] - id;
+    });
+
+    return sortedIds[differences.indexOf(2)] + 1;
 }

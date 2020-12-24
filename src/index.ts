@@ -4,7 +4,7 @@ import { getLines, getNumbers, parsePassportInput } from "./utilities";
 import { isValidOfficialPassword, isValidSledRentalPassword, numValidPasswords } from "./day2";
 import { multiplyEncounteredTrees, numTreesEncountered } from "./day3";
 import { numCompletePassports, numValidPassports } from "./day4";
-import { getPositionFromBoardingPass } from "./day5";
+import { getMissingSeatId, getPositionFromBoardingPass, getSeatId } from "./day5";
 
 fs.readFile('./input/day1.txt').then((contents) => {
     const numbers = getNumbers(contents.toString());
@@ -32,8 +32,8 @@ fs.readFile('./input/day4.txt').then((contents) => {
 
 fs.readFile('./input/day5.txt').then((contents) => {
     let positions = getLines(contents.toString()).map(getPositionFromBoardingPass);
-    const highestSeatId = positions
-        .map(([row, col]) => row * 8 + col)
-        .sort((a, b) => b - a)[0];
+    let seatIds = positions.map(getSeatId);
+    const highestSeatId = seatIds.sort((a, b) => b - a)[0];
     console.log(`day 5, part 1: ${highestSeatId}`);
+    console.log(`day 5, part 2: ${getMissingSeatId(seatIds)}`);
 });
